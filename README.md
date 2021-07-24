@@ -1,6 +1,5 @@
 # Mosquitto-clustering
-Implementations of data-stream clustering on low-cost machines. An MQTT mosquitto infrastructure publishes data. A client program subscribes to the server and does a clustering according to an "on-the-fly" algorithm. See the preliminary version of paper: https://lipn.univ-paris13.fr/~cerin/JPDC_SI_DISTRIBUTED_INTELLIGENCE.pdf
-
+Implementations of data-stream clustering on low-cost machines. An MQTT mosquitto infrastructure publishes data. A client program subscribes to the server and does a clustering according to an "on-the-fly" algorithm.
 # Paper Abstract
 Nowadays, the operations performed by the Internet of Things (IoT) systems are no more trivial
 since they rely on more sophisticated devices than in the past. The IoT system is physically
