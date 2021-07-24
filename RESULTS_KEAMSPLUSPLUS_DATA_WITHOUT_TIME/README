@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Temps d'execution lorsque les données sont des dates.
+Plus loin il y a le résultat lorsque les données ne
+sont pas des dates.
+
+C'est Kmeans++ qui est exécuté dans les deux cas
+
+Le nombre de points est 32248 dans les deux cas.
+
+Le hardware sur lequel s'est déroulé le test est le RaspBerry Pi4
+
+processor	: 0
+model name	: ARMv7 Processor rev 3 (v7l)
+BogoMIPS	: 126.00
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfp
+d32 lpae evtstrm crc32 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xd08
+CPU revision	: 3
+
+pi@raspberrypi:~/mosquitto $ more /proc/meminfo 
+MemTotal:        8064280 kB
+MemFree:         6867880 kB
+MemAvailable:    7299588 kB
+Buffers:          163480 kB
+Cached:           595728 kB
+SwapCached:            0 kB
+Active:           422608 kB
+Inactive:         589048 kB
+Active(anon):        812 kB
+Inactive(anon):   368440 kB
+Active(file):     421796 kB
+Inactive(file):   220608 kB
+Unevictable:       74892 kB
+Mlocked:              16 kB
+HighTotal:       7458816 kB
+HighFree:        6514916 kB
+LowTotal:         605464 kB
+LowFree:          352964 kB
+SwapTotal:        102396 kB
+SwapFree:         102396 kB
+Dirty:                 8 kB
+Writeback:             0 kB
+AnonPages:        327380 kB
+
+pi@raspberrypi:~/mosquitto $ uname -a
+Linux raspberrypi 5.10.17-v7l+ #1421 SMP Thu May 27 14:00:13 BST 2021 armv7l GNU/Linux
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Meaning of Real, User and Sys time statistics:
+
+In brief, Real refers to actual elapsed time including other processes
+that may be running at the same time; User and Sys refer to CPU time
+used only by the process (here the df command).
+
+More precisely:
+
+Real is wall clock time – time from start to finish of the call
+including time used by other processes and time the process spends
+blocked (for example if it is waiting for I/O to complete).
+
+User is the actual CPU time used in executing the process. Other
+processes and time the process spends blocked do not count.
+
+Sys is the amount of CPU time spent in the kernel within the process.
+So, User + Sys is the actual CPU time used by your process
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	96m27,668s
+user	12m35,625s
+sys	53m10,058s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	97m51,982s
+user	12m41,503s
+sys	54m4,571s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	96m34,374s
+user	12m34,916s
+sys	53m12,608s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	96m51,883s
+user	12m37,981s
+sys	53m23,722s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	96m23,871s
+user	12m34,453s
+sys	53m2,460s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	96m39,456s
+user	12m34,294s
+sys	53m19,828s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	96m30,030s
+user	12m33,585s
+sys	53m7,764s
+pi@raspberrypi:~/mosquitto $ emacs test.sh&
+[1] 7296
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Sur des données qui ne sont pas des date, le temps d'exécution
+est meilleur :
+
+
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+[1]+  Fini                    emacs test.sh
+
+real	79m7,021s
+user	10m31,982s
+sys	37m42,786s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	77m46,735s
+user	10m26,719s
+sys	36m32,730s
+pi@raspberrypi:~/mosquitto $ time /bin/bash test.sh
+
+real	78m44,580s
+user	10m30,635s
+sys	37m20,748s
