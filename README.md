@@ -1,6 +1,9 @@
 # Mosquitto-clustering
-Implementations of data-stream clustering on low-cost machines. An MQTT mosquitto infrastructure publishes data. A client program subscribes to the server and does a clustering according to an "on-the-fly" algorithm.
-# Paper Abstract
+
+Implementations of data-stream clustering on low-cost machines. An MQTT mosquitto infrastructure publishes data. A client program subscribes to the server and does a clustering according to an "on-the-fly" algorithm. The implementations are mandatory for the associated research, which is described as follows.
+
+## Paper Abstract
+
 Nowadays, the operations performed by the Internet of Things (IoT) systems are no more trivial
 since they rely on more sophisticated devices than in the past. The IoT system is physically
 composed of connected computing, digital, mechanical devices such as sensors or actuators.
@@ -21,3 +24,15 @@ schema is that we are clustering data "on the fyy” with no knowledge or assump
 the available data. We do not assume that all the data are known before a treatment batch by
 batch. Our schema also has the potential to be adapted to other classes of machine learning
 algorithm.
+
+## Hints for the compilation with Makefile
+
+* We use std::stod() hence the flag -std=c++11. The version of gcc for a Raspian distribution (8.3) is not adequate. So on Raspberry we suggest to install Gcc release 10.x or higher ; Our initial implementation for Raspberry used get_float() (see sources) to convert string to double.
+* Some functions used Open-MP. The corresponding flags are not set in the Makefile. So, by default there is no parallelization.
+* Directories with prefixes RESULTS* contain datasets and results. Check .csv files.
+* Python files are for generating the reports of results.
+* Bash scripts are maily devoted to publish data to the MQTT server
+
+## Prerequisites
+
+You need to install the Mosquitto MQTT server (and client-side). Regarding Python, you need to install qrcode and image libraries as well as Scikit Learn. We assume that Iertools, Numpy, and Pandas are already installed on your system.
