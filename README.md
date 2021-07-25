@@ -36,3 +36,9 @@ algorithm.
 ## Prerequisites
 
 You need to install the Mosquitto MQTT server (and client-side). Regarding Python, you need to install qrcode and image libraries as well as Scikit Learn. We assume that Iertools, Numpy, and Pandas are already installed on your system.
+
+# Inspired by
+
+Since our project reuses codes from others, we are grateful to:
+* https://github.com/ieyjzhou/KmeansPlusPlus
+* https://github.com/cameron314/concurrentqueue
