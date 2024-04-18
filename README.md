@@ -35,7 +35,8 @@ algorithms.
 
 ## Prerequisites
 
-You need to install a [Mosquitto MQTT](https://mosquitto.org/) server and the client. 
+You need to install a [Mosquitto MQTT](https://mosquitto.org/) server and the client. Regarding Python, please install qrcode and image libraries, and Scikit Learn. We assume that Itertools, Numpy, and Pandas are already installed on your system.
+
 
 # Inspired by
 
